@@ -1,0 +1,32 @@
+{
+  "name": "onoffice-sdk-ts",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for the onOffice API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "pnpm build"
+  },
+  "keywords": [
+    "onoffice",
+    "api",
+    "sdk",
+    "typescript",
+    "real-estate"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.12",
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
+    "eslint": "^9.23.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.0",
+    "typescript": "^5.8.2"
+  }
+} 
