@@ -2,6 +2,10 @@
 
 A TypeScript SDK for interacting with the onOffice API. This SDK provides a type-safe way to interact with the onOffice API, handling authentication, request formatting, and response parsing.
 
+## Disclaimer
+This SDK has not been validated or tested. Use on your own risk. Thanks
+
+
 ## Features
 
 - **Complete API Coverage**: Support for all onOffice API endpoints
