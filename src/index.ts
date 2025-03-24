@@ -1,2 +1,11 @@
+// Main SDK class
 export { OnOfficeSDK } from './OnOfficeSDK';
-export * from './types'; 
+
+// Types
+export * from './types';
+
+// Cache
+export * from './cache';
+
+// Exceptions
+export * from './exceptions'; 

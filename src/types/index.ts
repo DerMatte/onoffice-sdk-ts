@@ -10,24 +10,22 @@ export enum ActionId {
 export enum Module {
   ADDRESS = 'address',
   ESTATE = 'estate',
-  SEARCHCRITERIA = 'searchcriteria'
+  SEARCHCRITERIA = 'searchcriteria',
+  RELATION = 'relation'
 }
 
-export enum RelationType {
-  BUYER = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:buyer',
-  TENANT = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:renter',
-  OWNER = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:owner',
-  CONTACT_BROKER = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:contactPerson',
-  CONTACT_PERSON = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:contactPersonAll',
-  COMPLEX_ESTATE_UNITS = 'urn:onoffice-de-ns:smart:2.5:relationTypes:complex:estate:units',
-  ESTATE_ADDRESS_OWNER = 'urn:onoffice-de-ns:smart:2.5:relationTypes:estate:address:owner'
-}
+// Re-export relationships from dedicated file
+export * from './relationships';
 
 export interface OnOfficeConfig {
   token: string;
   secret: string;
   apiVersion?: 'stable' | 'latest';
   apiUrl?: string;
+  cacheOptions?: {
+    enabled?: boolean;
+    expiration?: number;
+  };
 }
 
 export interface OnOfficeResponse<T = any> {
@@ -78,6 +76,7 @@ export interface EstateData {
   ausstatt_beschr?: string;
   lage_beschr?: string;
   sonstige_angaben?: string;
+  [key: string]: any;
 }
 
 export interface AddressData {
@@ -92,4 +91,49 @@ export interface AddressData {
   Telefon2?: string;
   Telefax?: string;
   Mobil?: string;
+  [key: string]: any;
+}
+
+export interface EstateRecord {
+  Id: string;
+  [key: string]: any;
+}
+
+export interface AddressRecord {
+  KdNr: string;
+  [key: string]: any;
+}
+
+export interface EstateReadParameters {
+  data?: string[];
+  listlimit?: number;
+  listoffset?: number;
+  sortby?: Record<string, 'ASC' | 'DESC'>;
+  filter?: Record<string, Array<{ op: string; val: any }>>;
+  filterid?: string;
+  formatoutput?: boolean;
+}
+
+export interface AddressReadParameters {
+  data?: string[];
+  listlimit?: number;
+  listoffset?: number;
+  sortby?: Record<string, 'ASC' | 'DESC'>;
+  filter?: Record<string, Array<{ op: string; val: any }>>;
+  filterid?: string;
+  formatoutput?: boolean;
+}
+
+export interface EstateListResponse {
+  records: EstateRecord[];
+  meta: {
+    cntabsolute: number;
+  };
+}
+
+export interface AddressListResponse {
+  records: AddressRecord[];
+  meta: {
+    cntabsolute: number;
+  };
 } 
